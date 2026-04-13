@@ -9,9 +9,9 @@
       <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.126.1</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 02 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Toy-Compiler(EXPL)</title>
@@ -42,11 +42,32 @@
       <description>A Full Stack App For Blood bank Management</description>
     </item>
     <item>
+      <title>Coorg on the Himalayan 450 🏔️</title>
+      <link>http://localhost:1313/trips/coorg-himalayan-450/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/trips/coorg-himalayan-450/</guid>
+      <description>A weekend motorcycle trip to Coorg (Kodagu) on the Royal Enfield Himalayan 450 — coffee plantations, waterfalls, misty ghats, and chai stops.</description>
+    </item>
+    <item>
       <title>About Vivek</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
       <description>A snapshot into my background, interests, and what inspires me.</description>
+    </item>
+    <item>
+      <title>Habit Tracker 📊</title>
+      <link>http://localhost:1313/habits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/habits/</guid>
+      <description>Track your daily habits month by month. Stay consistent, build momentum.</description>
+    </item>
+    <item>
+      <title>Todo List ✅</title>
+      <link>http://localhost:1313/todo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/todo/</guid>
+      <description>Track what you&amp;#39;ve done today and plan what&amp;#39;s next.</description>
     </item>
   </channel>
 </rss>

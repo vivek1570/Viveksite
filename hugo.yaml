@@ -118,6 +118,18 @@ menu:
       name: Projects
       url: /projects/
       weight: 20
+    - identifier: trips
+      name: Trips
+      url: /trips/
+      weight: 25
+    - identifier: todo
+      name: Todo
+      url: /todo/
+      weight: 26
+    - identifier: habits
+      name: Habits
+      url: /habits/
+      weight: 27
     - identifier: example
       name: Resume
       url: "https://drive.google.com/file/d/1v8Bb7IADbZLP_2LJYNyOF-qT36Os7MNO/view?usp=sharing"
@@ -125,6 +137,9 @@ menu:
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
     noClasses: false
 # anchorLineNos: true

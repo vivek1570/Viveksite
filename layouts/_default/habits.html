@@ -1,0 +1,889 @@
+{{- define "main" }}
+
+<article class="post-single">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+      {{ .Description }}
+    </div>
+    {{- end }}
+  </header>
+
+  <div class="post-content">
+
+    <!-- ===== PIN LOCK SCREEN ===== -->
+    <div class="pin-lock-screen" id="pinLockScreen">
+      <div class="pin-lock-card">
+        <div class="pin-lock-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path><circle cx="12" cy="16" r="1"></circle></svg>
+        </div>
+        <h2 class="pin-lock-title">Private Area</h2>
+        <p class="pin-lock-subtitle">Enter your PIN to access this page</p>
+        <div class="pin-input-group">
+          <input type="password" id="pinInput" class="pin-input" placeholder="••••" maxlength="20" autocomplete="off" />
+          <button class="pin-submit-btn" id="pinSubmitBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+        <p class="pin-error" id="pinError">Incorrect PIN. Try again.</p>
+        <label class="pin-remember-label">
+          <input type="checkbox" id="pinRemember" /> Remember for this session
+        </label>
+      </div>
+    </div>
+
+    <!-- ===== PROTECTED CONTENT (hidden by default) ===== -->
+    <div class="habits-app" id="habitsApp" style="display:none;">
+      <!-- Month Navigation -->
+      <div class="habits-month-bar">
+        <button class="habits-nav-btn" id="prevMonth" aria-label="Previous month">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="habits-month-display">
+          <span class="habits-month-label" id="monthLabel"></span>
+          <span class="habits-year-label" id="yearLabel"></span>
+        </div>
+        <button class="habits-nav-btn" id="nextMonth" aria-label="Next month">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <button class="habits-this-month-btn" id="thisMonthBtn">This Month</button>
+      </div>
+
+      <!-- Habit Stats Overview -->
+      <div class="habits-overview" id="habitsOverview"></div>
+
+      <!-- Add Habit -->
+      <div class="habits-add-section">
+        <div class="habits-add-wrapper">
+          <input type="text" id="habitInput" class="habits-input" placeholder="Add a new habit..." autocomplete="off" />
+          <input type="text" id="habitEmoji" class="habits-emoji-input" placeholder="🎯" maxlength="2" />
+          <button class="habits-add-btn" id="addHabitBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Add Habit
+          </button>
+        </div>
+      </div>
+
+      <!-- Habit Tracker Grid -->
+      <div class="habits-grid-container" id="habitsGridContainer">
+      </div>
+
+      <!-- Legend -->
+      <div class="habits-legend">
+        <div class="habits-legend-item">
+          <div class="habits-legend-dot habits-legend-empty"></div>
+          <span>Not done</span>
+        </div>
+        <div class="habits-legend-item">
+          <div class="habits-legend-dot habits-legend-done"></div>
+          <span>Done</span>
+        </div>
+        <div class="habits-legend-item">
+          <div class="habits-legend-dot habits-legend-today"></div>
+          <span>Today</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+/* ===== PIN Lock Styles ===== */
+.pin-lock-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 20px;
+}
+.pin-lock-card {
+  text-align: center;
+  padding: 48px 40px;
+  background: var(--code-bg);
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+.pin-lock-icon {
+  margin-bottom: 16px;
+  color: var(--secondary);
+  opacity: 0.5;
+}
+.pin-lock-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 6px;
+}
+.pin-lock-subtitle {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  margin: 0 0 24px;
+}
+.pin-input-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.pin-input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--theme);
+  color: var(--primary);
+  font-size: 1.2rem;
+  text-align: center;
+  letter-spacing: 6px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.pin-input:focus {
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+}
+.pin-submit-btn {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.pin-submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+.pin-error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin: 0 0 12px;
+  display: none;
+  animation: pinShake 0.4s ease;
+}
+@keyframes pinShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+.pin-remember-label {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.pin-remember-label input[type="checkbox"] {
+  accent-color: #6c5ce7;
+}
+
+/* ===== Habits App Styles ===== */
+.habits-app {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Month Bar */
+.habits-month-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 0;
+  margin-bottom: 24px;
+}
+.habits-nav-btn {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.habits-nav-btn:hover {
+  background: var(--primary);
+  color: var(--theme);
+  border-color: var(--primary);
+  transform: scale(1.08);
+}
+.habits-month-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 150px;
+}
+.habits-month-label {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.habits-year-label {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  font-weight: 500;
+}
+.habits-this-month-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+.habits-this-month-btn:hover {
+  background: var(--primary);
+  color: var(--theme);
+}
+
+/* Overview Cards */
+.habits-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.habit-overview-card {
+  background: var(--code-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.habit-overview-card:hover {
+  border-color: #6c5ce7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(108, 92, 231, 0.12);
+}
+.habit-overview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.habit-overview-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+.habit-overview-emoji {
+  font-size: 1.3rem;
+}
+.habit-overview-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary);
+  opacity: 0.3;
+  padding: 2px;
+  border-radius: 4px;
+  display: flex;
+  transition: all 0.2s;
+}
+.habit-overview-delete:hover {
+  opacity: 1;
+  color: #ff6b6b;
+}
+.habit-overview-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.habit-overview-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.habit-overview-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+.habit-overview-pct {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  min-width: 36px;
+  text-align: right;
+}
+.habit-streak {
+  font-size: 0.75rem;
+  color: var(--secondary);
+}
+.habit-streak strong {
+  color: #fdcb6e;
+}
+
+/* Add Section */
+.habits-add-section {
+  margin-bottom: 24px;
+}
+.habits-add-wrapper {
+  display: flex;
+  gap: 8px;
+  background: var(--code-bg);
+  padding: 8px;
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  transition: border-color 0.2s;
+}
+.habits-add-wrapper:focus-within {
+  border-color: var(--primary);
+}
+.habits-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--primary);
+  padding: 10px 14px;
+  font-family: inherit;
+}
+.habits-input::placeholder {
+  color: var(--secondary);
+  opacity: 0.6;
+}
+.habits-emoji-input {
+  width: 50px;
+  text-align: center;
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  padding: 8px;
+  outline: none;
+}
+.habits-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.habits-add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+/* Habit Grid */
+.habits-grid-container {
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+.habits-grid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+.habits-grid th {
+  padding: 8px 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  background: var(--theme);
+}
+.habits-grid th.habit-name-th {
+  text-align: left;
+  min-width: 130px;
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+.habits-grid td {
+  text-align: center;
+  padding: 0;
+}
+.habits-grid td.habit-name-cell {
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--primary);
+  white-space: nowrap;
+  background: var(--code-bg);
+  border-radius: 8px;
+}
+.habit-name-emoji {
+  margin-right: 6px;
+}
+.habit-day-cell {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  background: var(--code-bg);
+  border: 1.5px solid transparent;
+}
+.habit-day-cell:hover {
+  transform: scale(1.15);
+  border-color: #6c5ce7;
+  z-index: 2;
+}
+.habit-day-cell.done {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  border-color: transparent;
+}
+.habit-day-cell.done::after {
+  content: '✓';
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.habit-day-cell.today {
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
+}
+.habit-day-cell.future {
+  opacity: 0.3;
+  cursor: default;
+}
+.habit-day-cell.future:hover {
+  transform: none;
+  border-color: transparent;
+}
+.day-header-today {
+  color: #6c5ce7 !important;
+  font-weight: 800 !important;
+}
+
+/* Legend */
+.habits-legend {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 16px 0;
+}
+.habits-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+.habits-legend-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+.habits-legend-empty {
+  background: var(--code-bg);
+  border: 1.5px solid var(--border);
+}
+.habits-legend-done {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+}
+.habits-legend-today {
+  background: var(--code-bg);
+  border: 2px solid #6c5ce7;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .habits-add-wrapper {
+    flex-wrap: wrap;
+  }
+  .habits-input {
+    width: 100%;
+  }
+  .habits-emoji-input {
+    flex: 0;
+  }
+  .habits-add-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .habit-day-cell {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+  }
+  .habits-grid th {
+    font-size: 0.6rem;
+  }
+  .habits-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pin-lock-card {
+    padding: 32px 24px;
+  }
+}
+</style>
+
+<script>
+(function() {
+  /* ===== PIN AUTHENTICATION ===== */
+  // SHA-256 hash of your PIN. Default PIN is: 1570
+  // To change your PIN, run this in browser console:
+  //   crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOUR_NEW_PIN')).then(h => console.log(Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')))
+  // Then replace the hash below.
+  const PIN_HASH = '3a481e728390d89c6843c180dc18ca8d693de5f5421e6240711c5dad483c72b3';
+  const SESSION_KEY = 'vivek-private-auth';
+
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function isSessionValid() {
+    try {
+      const stored = sessionStorage.getItem(SESSION_KEY);
+      return stored === PIN_HASH;
+    } catch { return false; }
+  }
+
+  function unlockPage() {
+    document.getElementById('pinLockScreen').style.display = 'none';
+    document.getElementById('habitsApp').style.display = 'block';
+    initHabitsApp();
+  }
+
+  // Check if already authenticated this session
+  if (isSessionValid()) {
+    unlockPage();
+  } else {
+    document.getElementById('pinInput').focus();
+  }
+
+  async function attemptUnlock() {
+    const input = document.getElementById('pinInput');
+    const error = document.getElementById('pinError');
+    const remember = document.getElementById('pinRemember').checked;
+    const pin = input.value;
+
+    if (!pin) return;
+
+    const hash = await sha256(pin);
+    if (hash === PIN_HASH) {
+      if (remember) {
+        sessionStorage.setItem(SESSION_KEY, PIN_HASH);
+      }
+      unlockPage();
+    } else {
+      error.style.display = 'block';
+      input.value = '';
+      input.focus();
+      error.style.animation = 'none';
+      error.offsetHeight;
+      error.style.animation = '';
+    }
+  }
+
+  document.getElementById('pinSubmitBtn').addEventListener('click', attemptUnlock);
+  document.getElementById('pinInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') attemptUnlock();
+  });
+
+  /* ===== HABITS APP ===== */
+  function initHabitsApp() {
+    const STORAGE_KEY = 'vivek-habits-data';
+
+    const DEFAULT_HABITS = [
+      { id: 'h1', name: 'Exercise', emoji: '🏋️' },
+      { id: 'h2', name: 'Reading', emoji: '📖' },
+      { id: 'h3', name: 'Coding', emoji: '💻' },
+      { id: 'h4', name: 'Meditation', emoji: '🧘' }
+    ];
+
+    const GRADIENT_COLORS = [
+      ['#6c5ce7', '#a855f7'],
+      ['#00b894', '#00cec9'],
+      ['#fd79a8', '#e84393'],
+      ['#fdcb6e', '#f39c12'],
+      ['#74b9ff', '#0984e3'],
+      ['#e17055', '#d63031'],
+    ];
+
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    function loadData() {
+      try {
+        const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (d && d.habits) return d;
+        return initDefaultData();
+      } catch { return initDefaultData(); }
+    }
+
+    function initDefaultData() {
+      const data = { habits: DEFAULT_HABITS, records: {} };
+      saveData(data);
+      return data;
+    }
+
+    function saveData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function monthKey(y, m) {
+      return `${y}-${String(m + 1).padStart(2, '0')}`;
+    }
+
+    function daysInMonth(y, m) {
+      return new Date(y, m + 1, 0).getDate();
+    }
+
+    function isToday(y, m, d) {
+      const t = new Date();
+      return t.getFullYear() === y && t.getMonth() === m && t.getDate() === d;
+    }
+
+    function isFuture(y, m, d) {
+      const t = new Date();
+      t.setHours(0, 0, 0, 0);
+      const check = new Date(y, m, d);
+      return check > t;
+    }
+
+    function updateMonthDisplay() {
+      const months = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'];
+      document.getElementById('monthLabel').textContent = months[currentMonth];
+      document.getElementById('yearLabel').textContent = currentYear;
+    }
+
+    function getRecord(data, habitId, y, m, d) {
+      const key = `${monthKey(y, m)}-${String(d).padStart(2, '0')}`;
+      return data.records[habitId] && data.records[habitId][key];
+    }
+
+    function setRecord(data, habitId, y, m, d, value) {
+      const key = `${monthKey(y, m)}-${String(d).padStart(2, '0')}`;
+      if (!data.records[habitId]) data.records[habitId] = {};
+      data.records[habitId][key] = value;
+      saveData(data);
+    }
+
+    function getStreakForHabit(data, habitId) {
+      let streak = 0;
+      const today = new Date();
+      let d = new Date(today);
+      while (true) {
+        const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        if (data.records[habitId] && data.records[habitId][key]) {
+          streak++;
+          d.setDate(d.getDate() - 1);
+        } else {
+          break;
+        }
+      }
+      return streak;
+    }
+
+    function getMonthCompletionForHabit(data, habitId, y, m) {
+      const days = daysInMonth(y, m);
+      let done = 0;
+      const today = new Date();
+      let totalDays = days;
+      if (y === today.getFullYear() && m === today.getMonth()) {
+        totalDays = today.getDate();
+      }
+      for (let d = 1; d <= totalDays; d++) {
+        if (getRecord(data, habitId, y, m, d)) done++;
+      }
+      return { done, total: totalDays };
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function renderOverview() {
+      const data = loadData();
+      const container = document.getElementById('habitsOverview');
+      container.innerHTML = '';
+
+      data.habits.forEach((habit, idx) => {
+        const completion = getMonthCompletionForHabit(data, habit.id, currentYear, currentMonth);
+        const pct = completion.total === 0 ? 0 : Math.round((completion.done / completion.total) * 100);
+        const streak = getStreakForHabit(data, habit.id);
+        const colors = GRADIENT_COLORS[idx % GRADIENT_COLORS.length];
+
+        const card = document.createElement('div');
+        card.className = 'habit-overview-card';
+        card.innerHTML = `
+          <div class="habit-overview-header">
+            <div class="habit-overview-name">
+              <span class="habit-overview-emoji">${habit.emoji}</span>
+              ${escapeHtml(habit.name)}
+            </div>
+            <button class="habit-overview-delete" data-habit-id="${habit.id}" aria-label="Delete habit">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="habit-overview-stats">
+            <div class="habit-overview-bar">
+              <div class="habit-overview-fill" style="width:${pct}%; background: linear-gradient(90deg, ${colors[0]}, ${colors[1]})"></div>
+            </div>
+            <span class="habit-overview-pct">${pct}%</span>
+          </div>
+          <div class="habit-streak">🔥 Streak: <strong>${streak} day${streak !== 1 ? 's' : ''}</strong> | ${completion.done}/${completion.total} this month</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderGrid() {
+      const data = loadData();
+      const container = document.getElementById('habitsGridContainer');
+      const days = daysInMonth(currentYear, currentMonth);
+
+      if (data.habits.length === 0) {
+        container.innerHTML = '<div style="text-align:center;padding:40px;color:var(--secondary);opacity:0.6;">No habits yet. Add one above!</div>';
+        return;
+      }
+
+      let html = '<table class="habits-grid"><thead><tr><th class="habit-name-th">Habit</th>';
+      for (let d = 1; d <= days; d++) {
+        const todayClass = isToday(currentYear, currentMonth, d) ? ' day-header-today' : '';
+        html += `<th class="${todayClass}">${d}</th>`;
+      }
+      html += '</tr></thead><tbody>';
+
+      data.habits.forEach(habit => {
+        html += `<tr><td class="habit-name-cell"><span class="habit-name-emoji">${habit.emoji}</span>${escapeHtml(habit.name)}</td>`;
+        for (let d = 1; d <= days; d++) {
+          const done = getRecord(data, habit.id, currentYear, currentMonth, d);
+          const today = isToday(currentYear, currentMonth, d);
+          const future = isFuture(currentYear, currentMonth, d);
+          let classes = 'habit-day-cell';
+          if (done) classes += ' done';
+          if (today) classes += ' today';
+          if (future) classes += ' future';
+          html += `<td><div class="${classes}" data-habit="${habit.id}" data-day="${d}" title="${habit.name} - Day ${d}"></div></td>`;
+        }
+        html += '</tr>';
+      });
+
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    }
+
+    function render() {
+      updateMonthDisplay();
+      renderOverview();
+      renderGrid();
+    }
+
+    // Events
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      currentMonth--;
+      if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+      render();
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      currentMonth++;
+      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+      render();
+    });
+
+    document.getElementById('thisMonthBtn').addEventListener('click', () => {
+      const now = new Date();
+      currentMonth = now.getMonth();
+      currentYear = now.getFullYear();
+      render();
+    });
+
+    document.getElementById('addHabitBtn').addEventListener('click', addHabit);
+    document.getElementById('habitInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') addHabit();
+    });
+
+    function addHabit() {
+      const input = document.getElementById('habitInput');
+      const emojiInput = document.getElementById('habitEmoji');
+      const name = input.value.trim();
+      if (!name) return;
+      const emoji = emojiInput.value.trim() || '🎯';
+      const data = loadData();
+      data.habits.push({
+        id: 'h' + Date.now(),
+        name: name,
+        emoji: emoji
+      });
+      saveData(data);
+      input.value = '';
+      emojiInput.value = '';
+      render();
+    }
+
+    // Grid click
+    document.getElementById('habitsGridContainer').addEventListener('click', function(e) {
+      const cell = e.target.closest('.habit-day-cell');
+      if (!cell || cell.classList.contains('future')) return;
+      const habitId = cell.dataset.habit;
+      const day = parseInt(cell.dataset.day);
+      const data = loadData();
+      const current = getRecord(data, habitId, currentYear, currentMonth, day);
+      setRecord(data, habitId, currentYear, currentMonth, day, !current);
+      render();
+    });
+
+    // Delete habit
+    document.getElementById('habitsOverview').addEventListener('click', function(e) {
+      const btn = e.target.closest('.habit-overview-delete');
+      if (!btn) return;
+      const habitId = btn.dataset.habitId;
+      if (!confirm('Delete this habit and all its records?')) return;
+      const data = loadData();
+      data.habits = data.habits.filter(h => h.id !== habitId);
+      delete data.records[habitId];
+      saveData(data);
+      render();
+    });
+
+    // Init
+    render();
+  }
+})();
+</script>
+
+{{- end }}{{/* end main */}}

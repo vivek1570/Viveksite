@@ -9,112 +9,154 @@
       <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.126.1</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 02 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coorg</title>
+      <link>http://localhost:1313/tags/coorg/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/coorg/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Himalayan-450</title>
+      <link>http://localhost:1313/tags/himalayan-450/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/himalayan-450/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Karnataka</title>
+      <link>http://localhost:1313/tags/karnataka/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/karnataka/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Motorcycle</title>
+      <link>http://localhost:1313/tags/motorcycle/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/motorcycle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Royal-Enfield</title>
+      <link>http://localhost:1313/tags/royal-enfield/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/royal-enfield/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Travel</title>
+      <link>http://localhost:1313/tags/travel/</link>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/travel/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Express JS</title>
       <link>http://localhost:1313/tags/express-js/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/express-js/</guid>
       <description></description>
     </item>
     <item>
       <title>Firebase</title>
       <link>http://localhost:1313/tags/firebase/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/firebase/</guid>
       <description></description>
     </item>
     <item>
       <title>Mongo DB</title>
       <link>http://localhost:1313/tags/mongo-db/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/mongo-db/</guid>
       <description></description>
     </item>
     <item>
       <title>Node Js</title>
       <link>http://localhost:1313/tags/node-js/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/node-js/</guid>
       <description></description>
     </item>
     <item>
       <title>React Js</title>
       <link>http://localhost:1313/tags/react-js/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/react-js/</guid>
       <description></description>
     </item>
     <item>
       <title>Redux Tool Kit</title>
       <link>http://localhost:1313/tags/redux-tool-kit/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/redux-tool-kit/</guid>
       <description></description>
     </item>
     <item>
       <title>Academic</title>
       <link>http://localhost:1313/tags/academic/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/academic/</guid>
       <description></description>
     </item>
     <item>
       <title>Compiler</title>
       <link>http://localhost:1313/tags/compiler/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/compiler/</guid>
       <description></description>
     </item>
     <item>
       <title>Bootstrap</title>
       <link>http://localhost:1313/tags/bootstrap/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/bootstrap/</guid>
       <description></description>
     </item>
     <item>
       <title>CSS</title>
       <link>http://localhost:1313/tags/css/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/css/</guid>
       <description></description>
     </item>
     <item>
       <title>Django</title>
       <link>http://localhost:1313/tags/django/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/django/</guid>
       <description></description>
     </item>
     <item>
       <title>HTML</title>
       <link>http://localhost:1313/tags/html/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/html/</guid>
       <description></description>
     </item>
     <item>
       <title>Sql Lite</title>
       <link>http://localhost:1313/tags/sql-lite/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/sql-lite/</guid>
       <description></description>
     </item>
     <item>
       <title>RDBMS</title>
       <link>http://localhost:1313/tags/rdbms/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/rdbms/</guid>
       <description></description>
     </item>
     <item>
       <title>SQL</title>
       <link>http://localhost:1313/tags/sql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/sql/</guid>
       <description></description>
     </item>

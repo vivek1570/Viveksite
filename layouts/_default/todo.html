@@ -1,0 +1,837 @@
+{{- define "main" }}
+
+<article class="post-single">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+      {{ .Description }}
+    </div>
+    {{- end }}
+  </header>
+
+  <div class="post-content">
+
+    <!-- ===== PIN LOCK SCREEN ===== -->
+    <div class="pin-lock-screen" id="pinLockScreen">
+      <div class="pin-lock-card">
+        <div class="pin-lock-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path><circle cx="12" cy="16" r="1"></circle></svg>
+        </div>
+        <h2 class="pin-lock-title">Private Area</h2>
+        <p class="pin-lock-subtitle">Enter your PIN to access this page</p>
+        <div class="pin-input-group">
+          <input type="password" id="pinInput" class="pin-input" placeholder="••••" maxlength="20" autocomplete="off" />
+          <button class="pin-submit-btn" id="pinSubmitBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+        <p class="pin-error" id="pinError">Incorrect PIN. Try again.</p>
+        <label class="pin-remember-label">
+          <input type="checkbox" id="pinRemember" /> Remember for this session
+        </label>
+      </div>
+    </div>
+
+    <!-- ===== PROTECTED CONTENT (hidden by default) ===== -->
+    <div class="todo-app" id="todoApp" style="display:none;">
+      <!-- Date Selector -->
+      <div class="todo-date-bar">
+        <button class="todo-date-btn" id="prevDay" aria-label="Previous day">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="todo-date-display">
+          <span class="todo-date-label" id="dateLabel"></span>
+          <span class="todo-date-weekday" id="weekdayLabel"></span>
+        </div>
+        <button class="todo-date-btn" id="nextDay" aria-label="Next day">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <button class="todo-today-btn" id="todayBtn">Today</button>
+      </div>
+
+      <!-- Add Todo Input -->
+      <div class="todo-input-section">
+        <div class="todo-input-wrapper">
+          <input type="text" id="todoInput" class="todo-input" placeholder="What do you need to do?" autocomplete="off" />
+          <select id="todoPriority" class="todo-priority-select">
+            <option value="low">🟢 Low</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="high">🔴 High</option>
+          </select>
+          <button class="todo-add-btn" id="addTodoBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Add
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="todo-stats" id="todoStats">
+        <div class="todo-stat">
+          <span class="stat-number" id="totalCount">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="todo-stat">
+          <span class="stat-number stat-done" id="doneCount">0</span>
+          <span class="stat-label">Done</span>
+        </div>
+        <div class="todo-stat">
+          <span class="stat-number stat-pending" id="pendingCount">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="todo-stat todo-progress-stat">
+          <div class="todo-progress-ring">
+            <svg viewBox="0 0 36 36" class="progress-svg">
+              <path class="progress-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="progress-fill" id="progressRing" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span class="progress-text" id="progressText">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="todo-filters">
+        <button class="todo-filter active" data-filter="all">All</button>
+        <button class="todo-filter" data-filter="pending">Pending</button>
+        <button class="todo-filter" data-filter="done">Done</button>
+      </div>
+
+      <!-- Todo List -->
+      <div class="todo-list" id="todoList">
+        <div class="todo-empty" id="todoEmpty">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <p>No tasks yet. Add one above!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+/* ===== PIN Lock Styles ===== */
+.pin-lock-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 20px;
+}
+.pin-lock-card {
+  text-align: center;
+  padding: 48px 40px;
+  background: var(--code-bg);
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+.pin-lock-icon {
+  margin-bottom: 16px;
+  color: var(--secondary);
+  opacity: 0.5;
+}
+.pin-lock-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 6px;
+}
+.pin-lock-subtitle {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  margin: 0 0 24px;
+}
+.pin-input-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.pin-input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--theme);
+  color: var(--primary);
+  font-size: 1.2rem;
+  text-align: center;
+  letter-spacing: 6px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.pin-input:focus {
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+}
+.pin-submit-btn {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.pin-submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+.pin-error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin: 0 0 12px;
+  display: none;
+  animation: pinShake 0.4s ease;
+}
+@keyframes pinShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+.pin-remember-label {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.pin-remember-label input[type="checkbox"] {
+  accent-color: #6c5ce7;
+}
+
+/* ===== Todo App Styles ===== */
+.todo-app {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Date Bar */
+.todo-date-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 0;
+  margin-bottom: 20px;
+}
+.todo-date-btn {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.todo-date-btn:hover {
+  background: var(--primary);
+  color: var(--theme);
+  border-color: var(--primary);
+  transform: scale(1.08);
+}
+.todo-date-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 160px;
+}
+.todo-date-label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.todo-date-weekday {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+.todo-today-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+.todo-today-btn:hover {
+  background: var(--primary);
+  color: var(--theme);
+}
+
+/* Input Section */
+.todo-input-section {
+  margin-bottom: 24px;
+}
+.todo-input-wrapper {
+  display: flex;
+  gap: 8px;
+  background: var(--code-bg);
+  padding: 8px;
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  transition: border-color 0.2s;
+}
+.todo-input-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 132,109,255), 0.15);
+}
+.todo-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--primary);
+  padding: 10px 14px;
+  font-family: inherit;
+}
+.todo-input::placeholder {
+  color: var(--secondary);
+  opacity: 0.6;
+}
+.todo-priority-select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--theme);
+  color: var(--primary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+.todo-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.todo-add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+/* Stats */
+.todo-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--code-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+.todo-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+.stat-done { color: #00b894; }
+.stat-pending { color: #fdcb6e; }
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.todo-progress-stat {
+  flex: 0 0 auto;
+}
+.todo-progress-ring {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.progress-svg {
+  width: 50px;
+  height: 50px;
+  transform: rotate(-90deg);
+}
+.progress-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 3;
+}
+.progress-fill {
+  fill: none;
+  stroke: #6c5ce7;
+  stroke-width: 3;
+  stroke-dasharray: 0, 100;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.6s ease;
+}
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Filters */
+.todo-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.todo-filter {
+  padding: 8px 20px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+.todo-filter.active, .todo-filter:hover {
+  background: linear-gradient(135deg, #6c5ce7, #a855f7);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* Todo List */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 120px;
+}
+.todo-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  color: var(--secondary);
+  gap: 12px;
+}
+.todo-empty p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--code-bg);
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  transition: all 0.25s;
+  animation: todoSlideIn 0.3s ease;
+}
+@keyframes todoSlideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.todo-item:hover {
+  border-color: #6c5ce7;
+  box-shadow: 0 2px 12px rgba(108, 92, 231, 0.1);
+}
+.todo-item.done {
+  opacity: 0.6;
+}
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+}
+.todo-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  background: transparent;
+}
+.todo-checkbox:hover {
+  border-color: #6c5ce7;
+}
+.todo-checkbox.checked {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  border-color: transparent;
+}
+.todo-checkbox.checked::after {
+  content: '✓';
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.todo-text {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--primary);
+  line-height: 1.4;
+}
+.todo-priority {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.todo-priority.high { background: rgba(255, 107, 107, 0.15); color: #ff6b6b; }
+.todo-priority.medium { background: rgba(253, 203, 110, 0.15); color: #fdcb6e; }
+.todo-priority.low { background: rgba(0, 184, 148, 0.15); color: #00b894; }
+.todo-time {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  opacity: 0.6;
+  white-space: nowrap;
+}
+.todo-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary);
+  opacity: 0.4;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  transition: all 0.2s;
+}
+.todo-delete:hover {
+  opacity: 1;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .todo-input-wrapper {
+    flex-wrap: wrap;
+  }
+  .todo-input {
+    width: 100%;
+  }
+  .todo-priority-select {
+    flex: 1;
+  }
+  .todo-add-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .todo-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .todo-time {
+    order: 5;
+    width: 100%;
+    text-align: right;
+  }
+  .pin-lock-card {
+    padding: 32px 24px;
+  }
+}
+</style>
+
+<script>
+(function() {
+  /* ===== PIN AUTHENTICATION ===== */
+  // SHA-256 hash of your PIN. Default PIN is: 1570
+  // To change your PIN, run this in browser console:
+  //   crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOUR_NEW_PIN')).then(h => console.log(Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')))
+  // Then replace the hash below.
+  const PIN_HASH = '3a481e728390d89c6843c180dc18ca8d693de5f5421e6240711c5dad483c72b3';
+  const SESSION_KEY = 'vivek-private-auth';
+
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function isSessionValid() {
+    try {
+      const stored = sessionStorage.getItem(SESSION_KEY);
+      return stored === PIN_HASH;
+    } catch { return false; }
+  }
+
+  function unlockPage() {
+    document.getElementById('pinLockScreen').style.display = 'none';
+    document.getElementById('todoApp').style.display = 'block';
+    initTodoApp();
+  }
+
+  // Check if already authenticated this session
+  if (isSessionValid()) {
+    unlockPage();
+  } else {
+    document.getElementById('pinInput').focus();
+  }
+
+  async function attemptUnlock() {
+    const input = document.getElementById('pinInput');
+    const error = document.getElementById('pinError');
+    const remember = document.getElementById('pinRemember').checked;
+    const pin = input.value;
+
+    if (!pin) return;
+
+    const hash = await sha256(pin);
+    if (hash === PIN_HASH) {
+      if (remember) {
+        sessionStorage.setItem(SESSION_KEY, PIN_HASH);
+      }
+      unlockPage();
+    } else {
+      error.style.display = 'block';
+      input.value = '';
+      input.focus();
+      // Reset animation
+      error.style.animation = 'none';
+      error.offsetHeight; // trigger reflow
+      error.style.animation = '';
+    }
+  }
+
+  document.getElementById('pinSubmitBtn').addEventListener('click', attemptUnlock);
+  document.getElementById('pinInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') attemptUnlock();
+  });
+
+  /* ===== TODO APP ===== */
+  function initTodoApp() {
+    const STORAGE_KEY = 'vivek-todo-data';
+    let currentDate = new Date();
+    let currentFilter = 'all';
+
+    function dateKey(d) {
+      return d.toISOString().split('T')[0];
+    }
+
+    function formatDate(d) {
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function formatWeekday(d) {
+      return d.toLocaleDateString('en-US', { weekday: 'long' });
+    }
+
+    function isToday(d) {
+      const t = new Date();
+      return dateKey(d) === dateKey(t);
+    }
+
+    function loadData() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch { return {}; }
+    }
+
+    function saveData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function getTodos() {
+      const data = loadData();
+      return data[dateKey(currentDate)] || [];
+    }
+
+    function setTodos(todos) {
+      const data = loadData();
+      data[dateKey(currentDate)] = todos;
+      saveData(data);
+    }
+
+    function updateDateDisplay() {
+      document.getElementById('dateLabel').textContent = isToday(currentDate) ? 'Today' : formatDate(currentDate);
+      document.getElementById('weekdayLabel').textContent = isToday(currentDate) ? formatDate(currentDate) : formatWeekday(currentDate);
+    }
+
+    function updateStats(todos) {
+      const total = todos.length;
+      const done = todos.filter(t => t.done).length;
+      const pending = total - done;
+      const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+
+      document.getElementById('totalCount').textContent = total;
+      document.getElementById('doneCount').textContent = done;
+      document.getElementById('pendingCount').textContent = pending;
+      document.getElementById('progressText').textContent = pct + '%';
+      document.getElementById('progressRing').style.strokeDasharray = `${pct}, 100`;
+    }
+
+    function renderTodos() {
+      const todos = getTodos();
+      const list = document.getElementById('todoList');
+      const empty = document.getElementById('todoEmpty');
+
+      const filtered = todos.filter(t => {
+        if (currentFilter === 'done') return t.done;
+        if (currentFilter === 'pending') return !t.done;
+        return true;
+      });
+
+      list.querySelectorAll('.todo-item').forEach(el => el.remove());
+
+      if (filtered.length === 0) {
+        empty.style.display = 'flex';
+      } else {
+        empty.style.display = 'none';
+        const priorityOrder = { high: 0, medium: 1, low: 2 };
+        const sorted = [...filtered].sort((a, b) => {
+          if (a.done !== b.done) return a.done ? 1 : -1;
+          return priorityOrder[a.priority] - priorityOrder[b.priority];
+        });
+        sorted.forEach(todo => {
+          const el = document.createElement('div');
+          el.className = `todo-item${todo.done ? ' done' : ''}`;
+          el.innerHTML = `
+            <div class="todo-checkbox${todo.done ? ' checked' : ''}" data-id="${todo.id}"></div>
+            <span class="todo-text">${escapeHtml(todo.text)}</span>
+            <span class="todo-priority ${todo.priority}">${todo.priority}</span>
+            <span class="todo-time">${todo.time || ''}</span>
+            <button class="todo-delete" data-id="${todo.id}" aria-label="Delete task">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            </button>
+          `;
+          list.appendChild(el);
+        });
+      }
+
+      updateStats(todos);
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function addTodo() {
+      const input = document.getElementById('todoInput');
+      const priority = document.getElementById('todoPriority').value;
+      const text = input.value.trim();
+      if (!text) return;
+
+      const todos = getTodos();
+      const now = new Date();
+      todos.push({
+        id: Date.now().toString(),
+        text: text,
+        priority: priority,
+        done: false,
+        time: now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+        created: now.toISOString()
+      });
+      setTodos(todos);
+      input.value = '';
+      renderTodos();
+    }
+
+    function toggleTodo(id) {
+      const todos = getTodos();
+      const todo = todos.find(t => t.id === id);
+      if (todo) {
+        todo.done = !todo.done;
+        setTodos(todos);
+        renderTodos();
+      }
+    }
+
+    function deleteTodo(id) {
+      let todos = getTodos();
+      todos = todos.filter(t => t.id !== id);
+      setTodos(todos);
+      renderTodos();
+    }
+
+    // Event Listeners
+    document.getElementById('addTodoBtn').addEventListener('click', addTodo);
+    document.getElementById('todoInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') addTodo();
+    });
+
+    document.getElementById('prevDay').addEventListener('click', () => {
+      currentDate.setDate(currentDate.getDate() - 1);
+      updateDateDisplay();
+      renderTodos();
+    });
+
+    document.getElementById('nextDay').addEventListener('click', () => {
+      currentDate.setDate(currentDate.getDate() + 1);
+      updateDateDisplay();
+      renderTodos();
+    });
+
+    document.getElementById('todayBtn').addEventListener('click', () => {
+      currentDate = new Date();
+      updateDateDisplay();
+      renderTodos();
+    });
+
+    document.querySelectorAll('.todo-filter').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.todo-filter').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentFilter = this.dataset.filter;
+        renderTodos();
+      });
+    });
+
+    document.getElementById('todoList').addEventListener('click', function(e) {
+      const checkbox = e.target.closest('.todo-checkbox');
+      if (checkbox) {
+        toggleTodo(checkbox.dataset.id);
+        return;
+      }
+      const deleteBtn = e.target.closest('.todo-delete');
+      if (deleteBtn) {
+        deleteTodo(deleteBtn.dataset.id);
+      }
+    });
+
+    // Init
+    updateDateDisplay();
+    renderTodos();
+  }
+})();
+</script>
+
+{{- end }}{{/* end main */}}
