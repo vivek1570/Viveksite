@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Academic on Vivek</title>
-    <link>http://localhost:1313/tags/academic/</link>
+    <link>http://localhost:1313/Viveksite/tags/academic/</link>
     <description>Recent content in Academic on Vivek</description>
     <image>
       <title>Vivek</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/Viveksite/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/Viveksite/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 02 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/academic/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/Viveksite/tags/academic/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Toy-Compiler(EXPL)</title>
-      <link>http://localhost:1313/projects/expl_compiler/</link>
+      <link>http://localhost:1313/Viveksite/projects/expl_compiler/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/expl_compiler/</guid>
+      <guid>http://localhost:1313/Viveksite/projects/expl_compiler/</guid>
       <description>A Toy Compiler</description>
     </item>
     <item>
       <title>RDBMS</title>
-      <link>http://localhost:1313/projects/dbms/</link>
+      <link>http://localhost:1313/Viveksite/projects/dbms/</link>
       <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/dbms/</guid>
+      <guid>http://localhost:1313/Viveksite/projects/dbms/</guid>
       <description>Relational Database Management System</description>
     </item>
   </channel>

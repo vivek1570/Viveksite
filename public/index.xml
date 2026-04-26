@@ -2,71 +2,71 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Vivek</title>
-    <link>http://localhost:1313/</link>
+    <link>http://localhost:1313/Viveksite/</link>
     <description>Recent content on Vivek</description>
     <image>
       <title>Vivek</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/Viveksite/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/Viveksite/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 15 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/Viveksite/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Toy-Compiler(EXPL)</title>
-      <link>http://localhost:1313/projects/expl_compiler/</link>
+      <link>http://localhost:1313/Viveksite/projects/expl_compiler/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/expl_compiler/</guid>
+      <guid>http://localhost:1313/Viveksite/projects/expl_compiler/</guid>
       <description>A Toy Compiler</description>
     </item>
     <item>
       <title>RDBMS</title>
-      <link>http://localhost:1313/projects/dbms/</link>
+      <link>http://localhost:1313/Viveksite/projects/dbms/</link>
       <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/dbms/</guid>
+      <guid>http://localhost:1313/Viveksite/projects/dbms/</guid>
       <description>Relational Database Management System</description>
     </item>
     <item>
       <title>Real Estate WebApp</title>
-      <link>http://localhost:1313/projects/realestatewebapp/</link>
+      <link>http://localhost:1313/Viveksite/projects/realestatewebapp/</link>
       <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/realestatewebapp/</guid>
+      <guid>http://localhost:1313/Viveksite/projects/realestatewebapp/</guid>
       <description>A Full Stack App For RealEsate Industry</description>
     </item>
     <item>
       <title>Blood Bank Management System</title>
-      <link>http://localhost:1313/projects/bloodbankapp/</link>
+      <link>http://localhost:1313/Viveksite/projects/bloodbankapp/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/bloodbankapp/</guid>
+      <guid>http://localhost:1313/Viveksite/projects/bloodbankapp/</guid>
       <description>A Full Stack App For Blood bank Management</description>
     </item>
     <item>
       <title>Coorg on the Himalayan 450 🏔️</title>
-      <link>http://localhost:1313/trips/coorg-himalayan-450/</link>
+      <link>http://localhost:1313/Viveksite/trips/coorg-himalayan-450/</link>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/trips/coorg-himalayan-450/</guid>
+      <guid>http://localhost:1313/Viveksite/trips/coorg-himalayan-450/</guid>
       <description>A weekend motorcycle trip to Coorg (Kodagu) on the Royal Enfield Himalayan 450 — coffee plantations, waterfalls, misty ghats, and chai stops.</description>
     </item>
     <item>
       <title>About Vivek</title>
-      <link>http://localhost:1313/about/</link>
+      <link>http://localhost:1313/Viveksite/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
+      <guid>http://localhost:1313/Viveksite/about/</guid>
       <description>A snapshot into my background, interests, and what inspires me.</description>
     </item>
     <item>
       <title>Habit Tracker 📊</title>
-      <link>http://localhost:1313/habits/</link>
+      <link>http://localhost:1313/Viveksite/habits/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/habits/</guid>
+      <guid>http://localhost:1313/Viveksite/habits/</guid>
       <description>Track your daily habits month by month. Stay consistent, build momentum.</description>
     </item>
     <item>
       <title>Todo List ✅</title>
-      <link>http://localhost:1313/todo/</link>
+      <link>http://localhost:1313/Viveksite/todo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/todo/</guid>
+      <guid>http://localhost:1313/Viveksite/todo/</guid>
       <description>Track what you&amp;#39;ve done today and plan what&amp;#39;s next.</description>
     </item>
   </channel>

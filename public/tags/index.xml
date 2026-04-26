@@ -2,162 +2,162 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Vivek</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>http://localhost:1313/Viveksite/tags/</link>
     <description>Recent content in Tags on Vivek</description>
     <image>
       <title>Vivek</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/Viveksite/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/Viveksite/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 15 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/Viveksite/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coorg</title>
-      <link>http://localhost:1313/tags/coorg/</link>
+      <link>http://localhost:1313/Viveksite/tags/coorg/</link>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/coorg/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/coorg/</guid>
       <description></description>
     </item>
     <item>
       <title>Himalayan-450</title>
-      <link>http://localhost:1313/tags/himalayan-450/</link>
+      <link>http://localhost:1313/Viveksite/tags/himalayan-450/</link>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/himalayan-450/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/himalayan-450/</guid>
       <description></description>
     </item>
     <item>
       <title>Karnataka</title>
-      <link>http://localhost:1313/tags/karnataka/</link>
+      <link>http://localhost:1313/Viveksite/tags/karnataka/</link>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/karnataka/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/karnataka/</guid>
       <description></description>
     </item>
     <item>
       <title>Motorcycle</title>
-      <link>http://localhost:1313/tags/motorcycle/</link>
+      <link>http://localhost:1313/Viveksite/tags/motorcycle/</link>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/motorcycle/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/motorcycle/</guid>
       <description></description>
     </item>
     <item>
       <title>Royal-Enfield</title>
-      <link>http://localhost:1313/tags/royal-enfield/</link>
+      <link>http://localhost:1313/Viveksite/tags/royal-enfield/</link>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/royal-enfield/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/royal-enfield/</guid>
       <description></description>
     </item>
     <item>
       <title>Travel</title>
-      <link>http://localhost:1313/tags/travel/</link>
+      <link>http://localhost:1313/Viveksite/tags/travel/</link>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/travel/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/travel/</guid>
       <description></description>
     </item>
     <item>
       <title>Express JS</title>
-      <link>http://localhost:1313/tags/express-js/</link>
+      <link>http://localhost:1313/Viveksite/tags/express-js/</link>
       <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/express-js/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/express-js/</guid>
       <description></description>
     </item>
     <item>
       <title>Firebase</title>
-      <link>http://localhost:1313/tags/firebase/</link>
+      <link>http://localhost:1313/Viveksite/tags/firebase/</link>
       <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/firebase/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/firebase/</guid>
       <description></description>
     </item>
     <item>
       <title>Mongo DB</title>
-      <link>http://localhost:1313/tags/mongo-db/</link>
+      <link>http://localhost:1313/Viveksite/tags/mongo-db/</link>
       <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/mongo-db/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/mongo-db/</guid>
       <description></description>
     </item>
     <item>
       <title>Node Js</title>
-      <link>http://localhost:1313/tags/node-js/</link>
+      <link>http://localhost:1313/Viveksite/tags/node-js/</link>
       <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/node-js/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/node-js/</guid>
       <description></description>
     </item>
     <item>
       <title>React Js</title>
-      <link>http://localhost:1313/tags/react-js/</link>
+      <link>http://localhost:1313/Viveksite/tags/react-js/</link>
       <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/react-js/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/react-js/</guid>
       <description></description>
     </item>
     <item>
       <title>Redux Tool Kit</title>
-      <link>http://localhost:1313/tags/redux-tool-kit/</link>
+      <link>http://localhost:1313/Viveksite/tags/redux-tool-kit/</link>
       <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/redux-tool-kit/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/redux-tool-kit/</guid>
       <description></description>
     </item>
     <item>
       <title>Academic</title>
-      <link>http://localhost:1313/tags/academic/</link>
+      <link>http://localhost:1313/Viveksite/tags/academic/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/academic/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/academic/</guid>
       <description></description>
     </item>
     <item>
       <title>Compiler</title>
-      <link>http://localhost:1313/tags/compiler/</link>
+      <link>http://localhost:1313/Viveksite/tags/compiler/</link>
       <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/compiler/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/compiler/</guid>
       <description></description>
     </item>
     <item>
       <title>Bootstrap</title>
-      <link>http://localhost:1313/tags/bootstrap/</link>
+      <link>http://localhost:1313/Viveksite/tags/bootstrap/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/bootstrap/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/bootstrap/</guid>
       <description></description>
     </item>
     <item>
       <title>CSS</title>
-      <link>http://localhost:1313/tags/css/</link>
+      <link>http://localhost:1313/Viveksite/tags/css/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/css/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/css/</guid>
       <description></description>
     </item>
     <item>
       <title>Django</title>
-      <link>http://localhost:1313/tags/django/</link>
+      <link>http://localhost:1313/Viveksite/tags/django/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/django/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/django/</guid>
       <description></description>
     </item>
     <item>
       <title>HTML</title>
-      <link>http://localhost:1313/tags/html/</link>
+      <link>http://localhost:1313/Viveksite/tags/html/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/html/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/html/</guid>
       <description></description>
     </item>
     <item>
       <title>Sql Lite</title>
-      <link>http://localhost:1313/tags/sql-lite/</link>
+      <link>http://localhost:1313/Viveksite/tags/sql-lite/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/sql-lite/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/sql-lite/</guid>
       <description></description>
     </item>
     <item>
       <title>RDBMS</title>
-      <link>http://localhost:1313/tags/rdbms/</link>
+      <link>http://localhost:1313/Viveksite/tags/rdbms/</link>
       <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/rdbms/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/rdbms/</guid>
       <description></description>
     </item>
     <item>
       <title>SQL</title>
-      <link>http://localhost:1313/tags/sql/</link>
+      <link>http://localhost:1313/Viveksite/tags/sql/</link>
       <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/sql/</guid>
+      <guid>http://localhost:1313/Viveksite/tags/sql/</guid>
       <description></description>
     </item>
   </channel>
