@@ -570,8 +570,25 @@
 }
 </style>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
 <script>
 (function() {
+  /* ===== FIREBASE INIT ===== */
+  const firebaseConfig = {
+    apiKey: "AIzaSyCBxOpDbm0NRP2Kp2XUEcKSLtGKWLAf-Rg",
+    authDomain: "viveksite-a0063.firebaseapp.com",
+    projectId: "viveksite-a0063",
+    storageBucket: "viveksite-a0063.firebasestorage.app",
+    messagingSenderId: "187742846946",
+    appId: "1:187742846946:web:d8b6d7af7292d5149d43bb",
+    measurementId: "G-XR3GHY1T2H"
+  };
+  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
   /* ===== PIN AUTHENTICATION ===== */
   // SHA-256 hash of your PIN. Default PIN is: 1570
   // To change your PIN, run this in browser console:
@@ -592,10 +609,10 @@
     } catch { return false; }
   }
 
-  function unlockPage() {
+  async function unlockPage() {
     document.getElementById('pinLockScreen').style.display = 'none';
     document.getElementById('todoApp').style.display = 'block';
-    initTodoApp();
+    await initTodoApp();
   }
 
   // Check if already authenticated this session
@@ -636,10 +653,59 @@
   });
 
   /* ===== TODO APP ===== */
-  function initTodoApp() {
+  async function initTodoApp() {
     const STORAGE_KEY = 'vivek-todo-data';
+    const FIRESTORE_COLLECTION = 'todos';
+    const FIRESTORE_DOC = 'vivek-data';
+
     let currentDate = new Date();
     let currentFilter = 'all';
+    let appData = null; // in-memory cache
+
+    /* --- Firestore helpers --- */
+    async function loadFromFirestore() {
+      try {
+        const docSnap = await db.collection(FIRESTORE_COLLECTION).doc(FIRESTORE_DOC).get();
+        if (docSnap.exists) return docSnap.data();
+        return null;
+      } catch (e) {
+        console.warn('Firestore load failed, using localStorage fallback:', e);
+        return null;
+      }
+    }
+
+    function saveToFirestore(data) {
+      db.collection(FIRESTORE_COLLECTION).doc(FIRESTORE_DOC).set(data)
+        .catch(e => console.warn('Firestore save failed:', e));
+    }
+
+    /* --- Data layer (reads from in-memory cache) --- */
+    function loadData() {
+      return appData;
+    }
+
+    function saveData(data) {
+      appData = data;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      saveToFirestore(data);
+    }
+
+    /* --- Initialize: Firestore → localStorage → defaults --- */
+    appData = await loadFromFirestore();
+    if (!appData) {
+      try {
+        const localData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (localData && Object.keys(localData).length > 0) {
+          appData = localData;
+          saveToFirestore(appData); // sync local data up to Firestore
+        }
+      } catch {}
+    }
+    if (!appData) {
+      appData = {};
+      saveData(appData);
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
 
     function dateKey(d) {
       return d.toISOString().split('T')[0];
@@ -656,16 +722,6 @@
     function isToday(d) {
       const t = new Date();
       return dateKey(d) === dateKey(t);
-    }
-
-    function loadData() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-      } catch { return {}; }
-    }
-
-    function saveData(data) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
 
     function getTodos() {

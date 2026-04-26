@@ -555,8 +555,24 @@
 }
 </style>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
 <script>
 (function() {
+  /* ===== FIREBASE INIT ===== */
+  const firebaseConfig = {
+    apiKey: "AIzaSyCBxOpDbm0NRP2Kp2XUEcKSLtGKWLAf-Rg",
+    authDomain: "viveksite-a0063.firebaseapp.com",
+    projectId: "viveksite-a0063",
+    storageBucket: "viveksite-a0063.firebasestorage.app",
+    messagingSenderId: "187742846946",
+    appId: "1:187742846946:web:d8b6d7af7292d5149d43bb",
+    measurementId: "G-XR3GHY1T2H"
+  };
+  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
   /* ===== PIN AUTHENTICATION ===== */
   // SHA-256 hash of your PIN. Default PIN is: 1570
   // To change your PIN, run this in browser console:
@@ -577,10 +593,10 @@
     } catch { return false; }
   }
 
-  function unlockPage() {
+  async function unlockPage() {
     document.getElementById('pinLockScreen').style.display = 'none';
     document.getElementById('habitsApp').style.display = 'block';
-    initHabitsApp();
+    await initHabitsApp();
   }
 
   // Check if already authenticated this session
@@ -620,8 +636,10 @@
   });
 
   /* ===== HABITS APP ===== */
-  function initHabitsApp() {
+  async function initHabitsApp() {
     const STORAGE_KEY = 'vivek-habits-data';
+    const FIRESTORE_COLLECTION = 'habits';
+    const FIRESTORE_DOC = 'vivek-data';
 
     const DEFAULT_HABITS = [
       { id: 'h1', name: 'Exercise', emoji: '🏋️' },
@@ -641,24 +659,52 @@
 
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
+    let appData = null; // in-memory cache
 
-    function loadData() {
+    /* --- Firestore helpers --- */
+    async function loadFromFirestore() {
       try {
-        const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
-        if (d && d.habits) return d;
-        return initDefaultData();
-      } catch { return initDefaultData(); }
+        const docSnap = await db.collection(FIRESTORE_COLLECTION).doc(FIRESTORE_DOC).get();
+        if (docSnap.exists) return docSnap.data();
+        return null;
+      } catch (e) {
+        console.warn('Firestore load failed, using localStorage fallback:', e);
+        return null;
+      }
     }
 
-    function initDefaultData() {
-      const data = { habits: DEFAULT_HABITS, records: {} };
-      saveData(data);
-      return data;
+    function saveToFirestore(data) {
+      db.collection(FIRESTORE_COLLECTION).doc(FIRESTORE_DOC).set(data)
+        .catch(e => console.warn('Firestore save failed:', e));
+    }
+
+    /* --- Data layer (reads from in-memory cache) --- */
+    function loadData() {
+      return appData;
     }
 
     function saveData(data) {
+      appData = data;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      saveToFirestore(data);
     }
+
+    /* --- Initialize: Firestore → localStorage → defaults --- */
+    appData = await loadFromFirestore();
+    if (!appData || !appData.habits) {
+      try {
+        const localData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (localData && localData.habits) {
+          appData = localData;
+          saveToFirestore(appData); // sync local data up to Firestore
+        }
+      } catch {}
+    }
+    if (!appData || !appData.habits) {
+      appData = { habits: DEFAULT_HABITS, records: {} };
+      saveData(appData);
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
 
     function monthKey(y, m) {
       return `${y}-${String(m + 1).padStart(2, '0')}`;
