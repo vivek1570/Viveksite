@@ -60,8 +60,8 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: "Vivek"
-    subtitle: "I am a Computer Science major with a keen interest in Compiler Design, Database Management Systems, Data Structures and Algorithms, and MERN Stack Development. An all-around FOSSy boy, I am passionate about Free and Open Source Software (FOSS) and its impact on the tech community."
-    imageUrl: "/profile4.jpeg"
+    subtitle: "Data Engineer passionate about systems, open source, and building scalable solutions—on code and on the road, blending engineering, creativity, and curiosity into everything I build."
+    imageUrl: "./vivek_himi.jpeg"
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
