@@ -92,11 +92,15 @@
     <loc>http://localhost:1313/Viveksite/tags/sql/</loc>
     <lastmod>2023-08-02T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/Viveksite/random/debian_notes/</loc>
+  </url><url>
     <loc>http://localhost:1313/Viveksite/about/</loc>
   </url><url>
     <loc>http://localhost:1313/Viveksite/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/Viveksite/habits/</loc>
+  </url><url>
+    <loc>http://localhost:1313/Viveksite/random/</loc>
   </url><url>
     <loc>http://localhost:1313/Viveksite/todo/</loc>
   </url>

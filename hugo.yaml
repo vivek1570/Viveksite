@@ -122,14 +122,18 @@ menu:
       name: Trips
       url: /trips/
       weight: 25
-    - identifier: todo
-      name: Todo
-      url: /todo/
-      weight: 26
-    - identifier: habits
-      name: Habits
-      url: /habits/
-      weight: 27
+    # - identifier: todo
+    #   name: Todo
+    #   url: /todo/
+    #   weight: 26
+    # - identifier: habits
+    #   name: Habits
+    #   url: /habits/
+    #   weight: 27
+    - identifier: random
+      name: random
+      url: /random/
+      weight: 28
     - identifier: example
       name: Resume
       url: "https://drive.google.com/file/d/1v8Bb7IADbZLP_2LJYNyOF-qT36Os7MNO/view?usp=sharing"
