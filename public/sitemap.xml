@@ -2,115 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:60145/Viveksite/projects/expl_compiler/</loc>
+    <loc>http://localhost:64113/Viveksite/projects/expl_compiler/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/projects/dbms/</loc>
+    <loc>http://localhost:64113/Viveksite/projects/dbms/</loc>
     <lastmod>2023-08-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/projects/realestatewebapp/</loc>
+    <loc>http://localhost:64113/Viveksite/projects/realestatewebapp/</loc>
     <lastmod>2024-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/projects/bloodbankapp/</loc>
+    <loc>http://localhost:64113/Viveksite/projects/bloodbankapp/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/himalayan-450/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/himalayan-450/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/kasol-trip/</loc>
+    <loc>http://localhost:64113/Viveksite/kasol-trip/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/motorcycle/</loc>
+    <loc>http://localhost:64113/Viveksite/kasol-trip_1/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/pennukonda/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/motorcycle/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/trips/pennukonda-himalayan450/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/pennukonda/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/</loc>
+    <loc>http://localhost:64113/Viveksite/trips/pennukonda-himalayan450/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/travel/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/travel/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/trips/</loc>
+    <loc>http://localhost:64113/Viveksite/</loc>
     <lastmod>2026-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/coorg/</loc>
+    <loc>http://localhost:64113/Viveksite/trips/</loc>
+    <lastmod>2026-09-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:64113/Viveksite/tags/coorg/</loc>
     <lastmod>2025-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/trips/coorg-himalayan-450/</loc>
+    <loc>http://localhost:64113/Viveksite/trips/coorg-himalayan-450/</loc>
     <lastmod>2025-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/karnataka/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/karnataka/</loc>
     <lastmod>2025-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/royal-enfield/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/royal-enfield/</loc>
     <lastmod>2025-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/express-js/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/express-js/</loc>
     <lastmod>2024-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/firebase/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/firebase/</loc>
     <lastmod>2024-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/mongo-db/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/mongo-db/</loc>
     <lastmod>2024-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/node-js/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/node-js/</loc>
     <lastmod>2024-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/projects/</loc>
+    <loc>http://localhost:64113/Viveksite/projects/</loc>
     <lastmod>2024-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/react-js/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/react-js/</loc>
     <lastmod>2024-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/redux-tool-kit/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/redux-tool-kit/</loc>
     <lastmod>2024-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/academic/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/academic/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/compiler/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/compiler/</loc>
     <lastmod>2024-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/bootstrap/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/bootstrap/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/css/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/css/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/django/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/django/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/html/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/html/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/sql-lite/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/sql-lite/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/rdbms/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/rdbms/</loc>
     <lastmod>2023-08-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/tags/sql/</loc>
+    <loc>http://localhost:64113/Viveksite/tags/sql/</loc>
     <lastmod>2023-08-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/random/debian_notes/</loc>
+    <loc>http://localhost:64113/Viveksite/random/debian_notes/</loc>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/about/</loc>
+    <loc>http://localhost:64113/Viveksite/about/</loc>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/categories/</loc>
+    <loc>http://localhost:64113/Viveksite/categories/</loc>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/habits/</loc>
+    <loc>http://localhost:64113/Viveksite/habits/</loc>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/random/</loc>
+    <loc>http://localhost:64113/Viveksite/random/</loc>
   </url><url>
-    <loc>http://localhost:60145/Viveksite/todo/</loc>
+    <loc>http://localhost:64113/Viveksite/todo/</loc>
   </url>
 </urlset>
