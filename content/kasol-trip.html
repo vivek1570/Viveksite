@@ -1,0 +1,118 @@
+---
+title: "Kasol Trip Planner"
+date: 2026-09-23
+draft: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bangalore to Kasol | Group Trip Planner</title>
+<style>
+:root{--ink:#18251f;--muted:#66756c;--green:#234d3b;--lime:#d9efb5;--cream:#f7f6ef;--card:#fff;--line:#e3e8df;--orange:#e88c52}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.hero{padding:64px 7vw 56px;background:linear-gradient(120deg,rgba(12,35,27,.88),rgba(22,64,47,.65)),url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2000&q=85') center/cover;color:white}
+.kicker{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:800;color:var(--lime)}h1{font-size:clamp(2.5rem,7vw,5.5rem);line-height:1.02;letter-spacing:-.055em;max-width:900px;margin:16px 0} .hero p{max-width:700px;color:#e7eee9;font-size:1.1rem}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.pill{border:1px solid #ffffff60;border-radius:99px;padding:7px 13px;font-size:.9rem;background:#ffffff12}
+nav{position:sticky;top:0;background:#fffF;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:5;padding:10px 7vw;display:flex;gap:18px;overflow:auto}nav a{white-space:nowrap;color:var(--green);text-decoration:none;font-weight:700;font-size:.9rem}
+main{max-width:1120px;margin:auto;padding:34px 22px 80px}.section{margin:38px 0}.eyebrow{color:#6b8b55;text-transform:uppercase;font-size:.75rem;font-weight:900;letter-spacing:.14em}h2{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.12;letter-spacing:-.035em;margin:8px 0 20px}.intro{color:var(--muted);max-width:760px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-28px;position:relative}.stat{background:white;border:1px solid var(--line);padding:20px;border-radius:15px;box-shadow:0 10px 30px #1b30200a}.stat b{display:block;font-size:1.5rem;color:var(--green)}.stat span{font-size:.85rem;color:var(--muted)}
+.route{display:flex;flex-wrap:wrap;align-items:center;gap:9px;background:#eaf1e4;padding:17px;border-radius:12px;font-weight:750;color:var(--green)}.route i{font-style:normal;color:#8ba17d}
+.timeline{display:grid;gap:14px}.day{display:grid;grid-template-columns:120px 1fr;gap:20px;background:white;border:1px solid var(--line);border-radius:16px;padding:22px}.date{font-weight:850;color:var(--green)}.date small{display:block;color:#819087;font-weight:600}.day h3{margin:0 0 5px;font-size:1.2rem}.day p{margin:6px 0;color:var(--muted)}.tag{display:inline-block;background:#edf5e5;color:#476b35;border-radius:6px;padding:3px 8px;font-size:.76rem;font-weight:800;margin:5px 4px 0 0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:22px}.card h3{margin:0 0 8px}.card p,.card li{color:var(--muted)}ul{padding-left:20px}.table-wrap{overflow:auto;background:white;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:570px}th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line)}th{background:#edf3e8;color:var(--green)}td:last-child{font-weight:650}
+.callout{background:#203f31;color:white;border-radius:16px;padding:24px}.callout p{color:#e1ebe4}.callout strong{color:var(--lime)}
+.checklist label{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);align-items:flex-start}.checklist input{margin-top:6px;accent-color:var(--green);transform:scale(1.15)}.budget-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0}.budget-controls select{padding:10px;border:1px solid var(--line);border-radius:8px;background:white;font:inherit}.total{font-size:2rem;color:var(--green);font-weight:900}.fine{font-size:.85rem;color:var(--muted)}footer{padding:30px 7vw;background:#172b22;color:#dfe9e1}footer a{color:var(--lime)}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.day{grid-template-columns:1fr;gap:8px;padding:17px}.grid{grid-template-columns:1fr}.hero{padding:48px 22px}.stat{padding:15px}}
+@media print{nav,.budget-controls button{display:none}.hero{background:#234d3b!important;print-color-adjust:exact}.day,.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="kicker">The group escape · October 2026</div>
+<h1>Bangalore to<br>the Himalayas.</h1>
+<p>A mountain-first road trip through Kasol, Kheerganga, Manali and Lahaul—with two Delhi days to wrap it up. Built for a group of 8–9.</p>
+<div class="pills"><span class="pill">09–20 October 2026</span><span class="pill">12 days · 11 nights*</span><span class="pill">Trek + mountain drives + city</span></div>
+</header>
+<nav><a href="#overview">Overview</a><a href="#itinerary">Itinerary</a><a href="#routes">Transport</a><a href="#budget">Budget</a><a href="#stays">Stays</a><a href="#checklist">Checklist</a></nav>
+<main>
+<div class="stats" id="overview">
+<div class="stat"><b>8–9</b><span>Travellers</span></div><div class="stat"><b>1</b><span>Main trek · Kheerganga</span></div><div class="stat"><b>₹38.5–66.5k</b><span>Est. per person</span></div><div class="stat"><b>Delhi</b><span>Fly in & out</span></div>
+</div>
+<section class="section">
+<div class="eyebrow">The big picture</div><h2>A loop that keeps travel sensible</h2>
+<p class="intro">Use Delhi as your flight gateway, travel north to the Parvati Valley, continue to Manali and Lahaul, then return to Delhi for your flight home. October brings autumn mountain scenery, but fresh snow around Kasol/Manali is not guaranteed.</p>
+<div class="route"><span>Bangalore</span><i>✈</i><span>Delhi</span><i>→</i><span>Kasol</span><i>→</i><span>Kheerganga</span><i>→</i><span>Tosh</span><i>→</i><span>Manali</span><i>→</i><span>Sissu</span><i>→</i><span>Delhi</span><i>✈</i><span>Bangalore</span></div>
+<p class="fine">*Includes two overnight bus journeys; actual nights depend on flight and bus timings. Treat all drive times as estimates.</p>
+</section>
+<section class="section" id="itinerary">
+<div class="eyebrow">Day by day</div><h2>Your 12-day itinerary</h2>
+<div class="timeline">
+<div class="day"><div class="date">FRI · OCT 09<small>Day 0</small></div><div><h3>Bangalore → Delhi ✈</h3><p>Take a late-evening direct flight. Depending on arrival time, rest near the airport or connect to an overnight bus north.</p><span class="tag">Flight day</span><span class="tag">Keep buffer</span></div></div>
+<div class="day"><div class="date">SAT · OCT 10<small>Day 1</small></div><div><h3>Delhi → Kasol</h3><p>Overnight/early bus via Bhuntar. Check in, recover, stroll the Parvati riverside and explore Kasol cafés.</p><span class="tag">Stay: Kasol</span><span class="tag">Easy day</span></div></div>
+<div class="day"><div class="date">SUN · OCT 11<small>Day 2</small></div><div><h3>Manikaran + Chalal</h3><p>Visit Manikaran Sahib and the hot springs, then take a relaxed forest walk to Chalal. Café evening in Kasol.</p><span class="tag">Stay: Kasol</span></div></div>
+<div class="day"><div class="date">MON · OCT 12<small>Day 3</small></div><div><h3>Kheerganga trek · ascent</h3><p>Transfer to Barshaini and begin the guided trek. Allow roughly 5–7 hours uphill depending on pace and trail conditions. Overnight only where permitted and available.</p><span class="tag">Trek day 1</span><span class="tag">Stay: Kheerganga*</span></div></div>
+<div class="day"><div class="date">TUE · OCT 13<small>Day 4</small></div><div><h3>Kheerganga → Barshaini → Kasol</h3><p>Enjoy the morning views, descend, and return to Kasol. Keep the evening free for recovery.</p><span class="tag">Trek day 2</span><span class="tag">Stay: Kasol</span></div></div>
+<div class="day"><div class="date">WED · OCT 14<small>Day 5</small></div><div><h3>Tosh + Kalga/Pulga</h3><p>Explore Tosh and, if time and access allow, Kalga or Pulga. Choose a Tosh overnight for a village feel, or return to Kasol for convenience.</p><span class="tag">Stay: Tosh or Kasol</span></div></div>
+<div class="day"><div class="date">THU · OCT 15<small>Day 6</small></div><div><h3>Kasol → Manali</h3><p>Drive via Bhuntar and Kullu. After check-in, visit Hadimba Temple, Old Manali cafés and Mall Road.</p><span class="tag">Stay: Manali</span></div></div>
+<div class="day"><div class="date">FRI · OCT 16<small>Day 7</small></div><div><h3>Solang → Atal Tunnel → Sissu</h3><p>Full-day mountain excursion. Explore Sissu Lake/waterfall and Lahaul scenery, then return to Manali if roads and weather permit. Snow is possible at higher elevations, not assured.</p><span class="tag">Stay: Manali</span><span class="tag">Weather-dependent</span></div></div>
+<div class="day"><div class="date">SAT · OCT 17<small>Day 8</small></div><div><h3>Naggar + optional Kullu</h3><p>Visit Naggar Castle and village. Optional rafting in Kullu only if operating and conditions are suitable. Keep this a lighter day.</p><span class="tag">Stay: Manali</span></div></div>
+<div class="day"><div class="date">SUN · OCT 18<small>Day 9</small></div><div><h3>Manali → Delhi</h3><p>Board an overnight Volvo/bus. Reserve seats together and keep the next morning flexible for arrival delays.</p><span class="tag">Overnight bus</span></div></div>
+<div class="day"><div class="date">MON · OCT 19<small>Day 10</small></div><div><h3>Delhi sightseeing</h3><p>Humayun’s Tomb → Lodhi Garden → India Gate/Kartavya Path → Connaught Place. Check in centrally or near Aerocity.</p><span class="tag">Stay: Delhi</span></div></div>
+<div class="day"><div class="date">TUE · OCT 20<small>Day 11</small></div><div><h3>Old Delhi → Bangalore ✈</h3><p>If your flight is late, visit Jama Masjid and Chandni Chowk in the morning. Leave a generous airport buffer; skip sightseeing for an early flight.</p><span class="tag">Return flight</span></div></div>
+</div>
+<p class="fine">*Kheerganga camping/accommodation access and rules can change. Confirm locally before departure; don't assume overnight camping is permitted.</p>
+</section>
+<section class="section" id="routes">
+<div class="eyebrow">Getting around</div><h2>Transport plan for 8–9 people</h2>
+<div class="grid">
+<div class="card"><h3>Option A · Buses + local cabs</h3><p>Fly BLR–DEL, take an overnight bus to Kasol, use local cabs for valley transfers, then bus Manali–Delhi. Usually the more budget-conscious structure.</p><ul><li>Book bus seats together early.</li><li>Allow 12–15 hours for Delhi–Kasol/Manali–Delhi.</li><li>Keep the Delhi arrival day light.</li></ul></div>
+<div class="card"><h3>Option B · Private 12-seater tempo traveller</h3><p>Get a quote for the Himachal circuit, with luggage capacity confirmed. More flexible stops and one group vehicle, but potentially costlier.</p><ul><li>Ask for tolls, parking, driver allowance, taxes and night charges in writing.</li><li>Confirm vehicle suitability for mountain roads.</li><li>Compare total quote against bus + local taxi costs.</li></ul></div>
+</div>
+<div class="table-wrap" style="margin-top:16px"><table><thead><tr><th>Leg</th><th>Mode</th><th>Planning allowance</th></tr></thead><tbody><tr><td>Bangalore → Delhi</td><td>Direct flight</td><td>~2.5–3.5 hours airborne</td></tr><tr><td>Delhi → Kasol</td><td>Bus via Bhuntar</td><td>~12–15 hours</td></tr><tr><td>Kasol → Manali</td><td>Bus/private cab</td><td>~3–5 hours</td></tr><tr><td>Manali → Sissu → Manali</td><td>Local vehicle</td><td>Full day; road/weather dependent</td></tr><tr><td>Manali → Delhi</td><td>Overnight bus</td><td>~12–15 hours</td></tr><tr><td>Delhi → Bangalore</td><td>Direct flight</td><td>~2.5–3.5 hours airborne</td></tr></tbody></table></div>
+<div class="callout" style="margin-top:16px"><strong>Flight strategy</strong><p>Search a late BLR→DEL flight on Oct 9 and a DEL→BLR flight on Oct 20. Prefer a return flight with enough buffer after the Manali–Delhi bus. Flight schedules/fares and group inventory are not verified here—check live availability before paying.</p></div>
+</section>
+<section class="section" id="budget">
+<div class="eyebrow">Money planning</div><h2>Group budget estimator</h2>
+<p class="intro">Indicative mid-range estimates per person. Change group size to see a rough group total. This is a planning range, not a live quote.</p>
+<div class="budget-controls"><label for="people">Group size</label><select id="people"><option>8</option><option selected>9</option></select><button onclick="window.print()" style="padding:10px 14px;border:0;border-radius:8px;background:#234d3b;color:white;font-weight:700;cursor:pointer">Print / Save PDF</button></div>
+<div class="grid">
+<div class="card"><h3>Per person</h3><div class="total">₹38,500–₹66,500</div><p class="fine">Flights, buses, local transport, stays, food, trek and activities.</p></div>
+<div class="card"><h3>Estimated group total</h3><div class="total" id="groupTotal">₹3.47–₹5.99 lakh</div><p class="fine">Add a contingency buffer of ₹5,000–₹8,000 per person.</p></div>
+</div>
+<div class="table-wrap" style="margin-top:16px"><table><thead><tr><th>Expense</th><th>Per person estimate</th></tr></thead><tbody><tr><td>Return flights</td><td>₹10,000–₹18,000</td></tr><tr><td>Delhi–Kasol + Manali–Delhi buses</td><td>₹3,000–₹5,000</td></tr><tr><td>Himachal local transport</td><td>₹5,000–₹9,000</td></tr><tr><td>Accommodation</td><td>₹9,000–₹15,000</td></tr><tr><td>Food & cafés</td><td>₹6,000–₹9,000</td></tr><tr><td>Kheerganga guide/stay</td><td>₹2,500–₹4,500</td></tr><tr><td>Activities, entry, misc.</td><td>₹3,000–₹6,000</td></tr></tbody></table></div>
+</section>
+<section class="section" id="stays">
+<div class="eyebrow">Accommodation strategy</div><h2>Keep the base changes limited</h2>
+<div class="grid">
+<div class="card"><h3>Kasol · 3 nights</h3><p>Riverside hotel, cottages or group hostel. Ask for 4 rooms or a private cottage with a shared sitting area.</p></div>
+<div class="card"><h3>Tosh · optional 1 night</h3><p>Mountain-view guesthouse for a village experience. Skip the overnight if you prefer less packing and more convenient transport.</p></div>
+<div class="card"><h3>Manali · 3 nights</h3><p>Group-friendly hotel with easy access to Solang and the Atal Tunnel route.</p></div>
+<div class="card"><h3>Delhi · 1 night</h3><p>Central Delhi for sightseeing or Aerocity for airport convenience. Overnight buses account for two travel nights.</p></div>
+</div>
+</section>
+<section class="section" id="checklist">
+<div class="eyebrow">Before you go</div><h2>Booking checklist</h2>
+<div class="card checklist">
+<label><input type="checkbox"> <span><b>Flights:</b> BLR–DEL Oct 9 and DEL–BLR Oct 20; verify baggage and group seat availability.</span></label>
+<label><input type="checkbox"> <span><b>Intercity buses:</b> Delhi–Kasol and Manali–Delhi; choose reliable operators and seats together.</span></label>
+<label><input type="checkbox"> <span><b>Stays:</b> Kasol, Manali, Delhi, and optional Tosh; confirm room occupancy and cancellation policy.</span></label>
+<label><input type="checkbox"> <span><b>Kheerganga:</b> Check trail status, permitted overnight options, guide, weather and fitness requirements.</span></label>
+<label><input type="checkbox"> <span><b>Local transport:</b> Compare private traveller quote with local cabs; confirm luggage capacity and inclusions.</span></label>
+<label><input type="checkbox"> <span><b>Sissu day:</b> Reconfirm Atal Tunnel/Lahaul road conditions and weather shortly before travel.</span></label>
+<label><input type="checkbox"> <span><b>Pack:</b> Layers, rain shell, grippy trekking shoes, personal medication, ID and power bank.</span></label>
+<label><input type="checkbox"> <span><b>Buffer:</b> Keep the final Delhi night; don't risk a same-day Manali-to-flight connection.</span></label>
+</div>
+</section>
+<section class="section">
+<div class="callout"><strong>Plan with flexibility</strong><p>October is autumn in Himachal, not a dependable snowfall window. Treat Sissu as a high-altitude scenery excursion, not a snow guarantee. Avoid adding Shimla, Dharamshala or Jibhi to this loop—the extra transfers can make the trip feel rushed.</p><p class="fine">Verify current trail permissions, road conditions, bus schedules, attraction opening days and flight fares before booking. Festival dates and local demand may affect availability.</p></div>
+</section>
+</main>
+<footer><b>Kasol Group Trip · October 2026</b><p>Prepared as a planning draft for 8–9 travellers. All prices, timings and access details are estimates and require confirmation.</p></footer>
+<script>
+const sel=document.getElementById('people'),out=document.getElementById('groupTotal');
+function fmt(n){return '₹'+(n/100000).toFixed(2)+' lakh'}
+function update(){let n=+sel.value;out.textContent=fmt(38500*n)+'–'+fmt(66500*n)}
+sel.addEventListener('change',update);update();
+</script>
+</body></html>

@@ -126,10 +126,10 @@ menu:
     #   name: Todo
     #   url: /todo/
     #   weight: 26
-    # - identifier: habits
-    #   name: Habits
-    #   url: /habits/
-    #   weight: 27
+    - identifier: kasol
+      name: kasol
+      url: /kasol-trip/
+      weight: 27
     - identifier: random
       name: random
       url: /random/
