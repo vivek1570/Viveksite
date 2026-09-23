@@ -134,10 +134,10 @@ menu:
       name: random
       url: /random/
       weight: 28
-    - identifier: example
-      name: Resume
-      url: "https://drive.google.com/file/d/1v8Bb7IADbZLP_2LJYNyOF-qT36Os7MNO/view?usp=sharing"
-      weight: 30
+    # - identifier: example
+    #   name: Resume
+    #   url: "https://drive.google.com/file/d/1v8Bb7IADbZLP_2LJYNyOF-qT36Os7MNO/view?usp=sharing"
+    #   weight: 30
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
